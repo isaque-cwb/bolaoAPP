@@ -1,20 +1,45 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { NativeBaseProvider, Text, Center, StatusBar } from 'native-base'
+import { useFonts, Roboto_400Regular, Roboto_500Medium, Roboto_700Bold } from '@expo-google-fonts/roboto'
+import { THEME } from './src/styles/theme'
+import { Loading } from './src/components/Loading'
+import { SignIn } from './src/screens/SignIn';
+import { LogBox } from 'react-native';
+import { AuthContextProvider } from './src/contexts/AuthContext';
+import { New } from './src/screens/New';
+
+LogBox.ignoreLogs(['In React 18, SSRProvider is not necessary and is a noop. You can remove it from your app.',])
+
 
 export default function App() {
+
+  const [fontsLoaded] = useFonts({
+    Roboto_400Regular,
+    Roboto_500Medium,
+    Roboto_700Bold
+  })
+
+
+
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NativeBaseProvider theme={THEME} >
+      <AuthContextProvider>
+
+        <StatusBar
+          barStyle="light-content"
+          backgroundColor={'transparent'}
+          translucent
+        />
+        {
+          !fontsLoaded ? <Loading /> : <New />
+        }
+      </AuthContextProvider>
+    </NativeBaseProvider>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+
+
+
+
+
