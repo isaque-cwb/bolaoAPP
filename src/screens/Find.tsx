@@ -1,9 +1,8 @@
-import { Heading, KeyboardAvoidingView, Text, VStack } from "native-base";
+import { Heading, VStack } from "native-base";
 import { Header } from "../components/Header";
-import Logo from '../assets/logo.svg'
 import { Input } from "../components/Input";
 import { Button } from "../components/Button";
-import { Keyboard, Platform, TouchableNativeFeedbackComponent, TouchableWithoutFeedback } from "react-native";
+import { Keyboard, TouchableWithoutFeedback } from "react-native";
 
 export function Find() {
     return (

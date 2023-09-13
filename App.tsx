@@ -7,6 +7,7 @@ import { LogBox } from 'react-native';
 import { AuthContextProvider } from './src/contexts/AuthContext';
 import { New } from './src/screens/New';
 import { Find } from './src/screens/Find';
+import { Pools } from './src/screens/Pools';
 
 LogBox.ignoreLogs(['In React 18, SSRProvider is not necessary and is a noop. You can remove it from your app.',])
 
@@ -32,7 +33,7 @@ export default function App() {
           translucent
         />
         {
-          !fontsLoaded ? <Loading /> : <Find />
+          !fontsLoaded ? <Loading /> : <Pools />
         }
       </AuthContextProvider>
     </NativeBaseProvider>
